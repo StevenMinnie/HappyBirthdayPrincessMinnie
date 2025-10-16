@@ -1,3 +1,3 @@
 # HappyBirthdayPrincessMinnie
 
-Respoitory storing the project code.
+Repository storing the project code.
