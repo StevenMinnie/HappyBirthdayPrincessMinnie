@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Princess Minnie's Birthday</title>
+  <meta name="description" content="A pink & pretty birthday tribute — journey, achievements, wishes, and a special video." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <canvas id="confettiPage" aria-hidden="true"></canvas>
+  <div id="balloonLayer" aria-hidden="true"></div>
+  <div class="decor-sparkle-tiling" aria-hidden="true"></div>
+  <div class="decor-bag" aria-hidden="true"></div>
+  <div class="decor-cake2" aria-hidden="true"></div>
+  <div id="bagLayer" aria-hidden="true"></div>
+
+
+
+  <!-- Decorations -->
+  <svg class="decor crown" viewBox="0 0 120 80" aria-hidden="true"><path d="M8 58 L28 20 L60 50 L92 18 L112 58 Z" fill="#ffd1ea" stroke="#ff90cf" stroke-width="3" /><circle cx="28" cy="20" r="5" fill="#ff90cf"/><circle cx="92" cy="18" r="5" fill="#ff90cf"/><circle cx="60" cy="50" r="5" fill="#ff90cf"/></svg>
+  <svg class="decor balloons" viewBox="0 0 200 320" aria-hidden="true"><ellipse cx="60" cy="70" rx="40" ry="55" fill="#ffbde6"/><path d="M60 125 C55 170, 90 210, 80 260" stroke="#d07aa8" stroke-width="2" fill="none"/><ellipse cx="130" cy="95" rx="40" ry="55" fill="#e9c6ff"/><path d="M130 150 C120 190, 150 230, 140 280" stroke="#b892ff" stroke-width="2" fill="none"/></svg>
+  <svg class="decor cake" viewBox="0 0 200 160" aria-hidden="true"><rect x="20" y="70" width="160" height="60" rx="10" fill="#ffe3f3" stroke="#ff9ad6"/><rect x="40" y="40" width="120" height="40" rx="10" fill="#ffd6ec" stroke="#ff9ad6"/><line x1="60" y1="35" x2="60" y2="20" stroke="#ffa3d9" stroke-width="4"/><line x1="100" y1="35" x2="100" y2="20" stroke="#ffa3d9" stroke-width="4"/><line x1="140" y1="35" x2="140" y2="20" stroke="#ffa3d9" stroke-width="4"/></svg>
+
+  <header class="nav">
+    <div class="nav-inner">
+      <div class="brand"><span class="dot"></span><span id="brand-name">Her Birthday</span></div>
+      <nav class="menu">
+        <a href="#journey">Journey</a><a href="#achievements">Achievements</a><a href="#voices">Words from Admirers</a><a href="#values">Qualities</a><a href="#tribute">Birthday Card</a><a href="#links">Find Her</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div>
+        <span class="badge">Birthday • Gift</span>
+        <h1 id="hero-title">Celebrating <span style="color:#b24b8e">Princess Minnie's Birthday</span></h1>
+        <h3 id="hero-title">
+	  <span style="color:#8B00FF">Wishing</span>     <!-- Violet -->
+	  <span style="color:#4B0082"> You</span>        <!-- Indigo -->
+	  <span style="color:#0000FF"> A Very</span>     <!-- Blue -->
+	  <span style="color:#00FF00"> Happy</span>      <!-- Green -->
+	  <span style="color:#FFB700"> Birthday</span>   <!-- Amber/Yellow -->
+	  <span style="color:#FFA500"> Princess</span>   <!-- Orange -->
+	  <span style="color:#EE4B2B"> Minnie!</span>    <!-- Red -->
+	</h3>
+
+        <p class="lead" id="hero-lead">On October 16, 1989, the world became a brighter and merrier place with the birth of Princess Minnie.</p>
+        <div class="cta">
+          <a class="btn" href="#journey">Explore Her Story ▶</a>
+          <a class="btn secondary" href="#links">Find Her ✨</a>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="portrait" id="hero-portrait">Portrait Placeholder</div>
+        <div style="padding:.7rem .2rem"><p class="sub">Today, we honor her brilliance, kindness, and sparkle. To the right are her two puppies, Oakley and Steven. They are extremely dear to her. They love and adore Princess Minnie. Also, there's SuperSanta, who has been Princess Minnie's loyal sub for a very long time, and he's been there for Princess Minnie whenever she needs Santa's magic powers.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="journey">
+    <div class="section-head"><div><div class="sub">Chapter I</div><h2>Her Journey</h2></div></div>
+    <div class="timeline" id="timeline"></div>
+  </section>
+
+  <section id="achievements">
+    <div class="section-head"><div><div class="sub">Chapter II</div><h2>Her Achievements</h2></div></div>
+    <div class="grid" id="achievements-grid"></div>
+  </section>
+
+  <section id="voices">
+    <div class="section-head"><div><div class="sub">Chapter III</div><h2>Words from Admirers</h2></div></div>
+    <div class="carousel">
+      <div class="slides" id="slides"></div>
+      <div class="arrows">
+        <button class="arrow" id="prev" aria-label="Previous">◀</button>
+        <button class="arrow" id="next" aria-label="Next">▶</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="values">
+    <div class="section-head"><div><div class="sub">Chapter IV</div><h2>Her Qualities</h2></div></div>
+    <div class="values" id="values-grid"></div>
+  </section>
+
+  <section id="tribute">
+    <div class="section-head"><div><div class="sub">Chapter V</div><h2>Birthday Card</h2></div></div>
+    <div class="tribute">
+      <div class="gift">
+        <canvas id="confetti"></canvas>
+        <div class="inner">
+          <h3 id="gift-title">Click to reveal your tribute</h3>
+          <p id="gift-text" class="lead">Press play and celebrate.</p>
+          <button class="btn" id="reveal">Open Birthday Card 🎬</button>
+        </div>
+      </div>
+      <div class="gift" style="min-height:280px">
+        <div class="inner" id="surprise" hidden>
+          <h3 style="color:#b24b8e">Happy Birthday!</h3>
+          <div id="video-wrap" style="margin-top:.6rem"></div>
+          <p class="sub" id="video-caption" style="margin-top:.6rem">— With admiration</p>
+        </div>
+        <div class="inner" id="placeholder">
+          <h3>Waiting to be unveiled…</h3>
+          <p class="lead">Your birthday card will appear here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section id="links">
+  <div class="section-head">
+    <div><div class="sub">Chapter VI</div><h2>Find Her</h2></div>
+  </div>
+
+  <!-- add `has-bg` and set --bg-img to your file -->
+<div class="linkcard has-bg" style="--bg-img:url('/assets/img/justminniebg.png')">
+  <div class="lt-stack">
+    <p class="linknote">All her links in one place:</p>
+    <a class="linkbtn lt-glow" id="hubBtnAlt" href="#" target="_blank" rel="noopener">
+      Open Linktree ✨
+    </a>
+  </div>
+</div>
+
+
+
+  <!-- Flip-book (unchanged markup) -->
+  <section class="book-wrap" aria-label="Birthday Card">
+    <h2 class="book-title">A Small Glimpse of Princess Minnie ✨</h2>
+
+    <!-- STATE radios -->
+    <input id="leaf0" name="leaf" type="radio" checked>
+    <input id="leaf1" name="leaf" type="radio">
+    <input id="leaf2" name="leaf" type="radio">
+    <input id="leaf3" name="leaf" type="radio">
+    <input id="leaf4" name="leaf" type="radio">
+    <input id="leaf5" name="leaf" type="radio">
+    <input id="leaf6" name="leaf" type="radio">
+    <input id="leaf7" name="leaf" type="radio">
+
+    <div class="book">
+      <div class="sheets">
+        <div class="sheet s1">
+          <div class="page front cover">
+            <div class="note">
+              <p>I would like to thank my owner, Princess Minnie. She just motivates me and keeps me going.</p>
+              <p>She is a perfectionist and extremely hardworking. She put in a lot of effort over the years to reach where she is today. She is exceptionally intelligent.</p>
+              <p>The thing I love about her the most is that she has the ability to be sadistic and tease and torment me, and at the same time, she is kind to me and looks out for me.</p>
+              <p>Due to all these qualities, I often look up to her for inspiration. I am really grateful that I got to know such an amazing person in my life.</p>
+              <p>Flip through a tiny gallery. Wishing Princess Minnie sparkle, laughter, and all the adoration she deserves. 💖</p>
+              <p>PS: I love Oakley a lot, too.</p>
+            </div>
+          </div>
+          <div class="page back">
+            <iframe src="https://drive.google.com/file/d/1QH8fgkLJ74ycB4IOHdROX-ZUwdNWZqJk/preview" allow="autoplay"></iframe>
+          </div>
+        </div>
+
+        <div class="sheet s2">
+          <div class="page front">
+            <iframe src="https://drive.google.com/file/d/1ddeg6_xuSrt6o0uaO74T-pkh-nKlte7J/preview" allow="autoplay"></iframe>
+          </div>
+          <div class="page back">
+            <iframe src="https://drive.google.com/file/d/1XtnQhRvs1_IoTzSKDwRsZiVKurxf5hHg/preview" allow="autoplay"></iframe>
+          </div>
+        </div>
+
+        <div class="sheet s3">
+          <div class="page front">
+            <iframe src="https://drive.google.com/file/d/1S_L6YV4gvgoi22oLN0xKyvsL4XgabdfU/preview" allow="autoplay"></iframe>
+          </div>
+          <div class="page back">
+            <iframe src="https://drive.google.com/file/d/1IXR--rlKrfzYPTluHShpdS_lypBfwdI6/preview" allow="autoplay"></iframe>
+          </div>
+        </div>
+
+        <div class="sheet s4">
+          <div class="page front">
+            <iframe src="https://drive.google.com/file/d/1J7l-C9PTVyKFVSYqnlzj7RhjXsNaMe1X/preview" allow="autoplay"></iframe>
+          </div>
+          <div class="page back">
+            <iframe src="https://drive.google.com/file/d/1SYJ9c9OAErVwxLJABqL_Dmb0PGfUp_xX/preview" allow="autoplay"></iframe>
+          </div>
+        </div>
+
+        <div class="sheet s5">
+          <div class="page front">
+            <iframe src="https://drive.google.com/file/d/1sLS6ZPyDtaN8WI6rO-YBO_xfZn_tlycf/preview" allow="autoplay"></iframe>
+          </div>
+          <div class="page back">
+            <iframe src="https://drive.google.com/file/d/14wK6mv-UHptDNASICOL86AFm0h9Ehhzp/preview" allow="autoplay"></iframe>
+          </div>
+        </div>
+
+        <div class="sheet s6">
+          <div class="page front">
+            <iframe src="https://drive.google.com/file/d/1rkBLFvs4QoevKJjdOCDhfadvgTIkobAr/preview" allow="autoplay"></iframe>
+          </div>
+          <div class="page back">
+            <iframe src="https://drive.google.com/file/d/1LdqrmZ6lA6hr3JoxjmhPcofp7LDYf_r-/preview" allow="autoplay"></iframe>
+          </div>
+        </div>
+
+        <div class="sheet s7">
+          <div class="page front">
+            <iframe src="https://drive.google.com/file/d/13ByUxn2oxatqoKy2YcmaGPUaKsJ-2FDm/preview" allow="autoplay"></iframe>
+          </div>
+          <div class="page back"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-controls">
+      <label class="flip-btn" data-for="leaf1" for="leaf1">Open the card 💌</label>
+      <label class="flip-btn" data-for="leaf2" for="leaf2">Next ▶</label>
+      <label class="flip-btn" data-for="leaf3" for="leaf3">Next ▶</label>
+      <label class="flip-btn" data-for="leaf4" for="leaf4">Next ▶</label>
+      <label class="flip-btn" data-for="leaf5" for="leaf5">Next ▶</label>
+      <label class="flip-btn" data-for="leaf6" for="leaf6">Next ▶</label>
+      <label class="flip-btn" data-for="leaf7" for="leaf7">Next ▶</label>
+      <label class="flip-btn" data-for="leaf0" for="leaf0">◀ Close</label>
+      <label class="flip-btn" data-for="leaf1-back" for="leaf1">◀ Back</label>
+      <label class="flip-btn" data-for="leaf2-back" for="leaf2">◀ Back</label>
+      <label class="flip-btn" data-for="leaf3-back" for="leaf3">◀ Back</label>
+      <label class="flip-btn" data-for="leaf4-back" for="leaf4">◀ Back</label>
+      <label class="flip-btn" data-for="leaf5-back" for="leaf5">◀ Back</label>
+      <label class="flip-btn" data-for="leaf6-back" for="leaf6">◀ Back</label>
+    </div>
+    <div class="flip-note">Use the buttons to flip pages.</div>
+  </section>
+  
+    <footer>
+    <div style="max-width:1200px;margin:0 auto">Made with ❤️ by Minnie's Puppy Steven, for <span id="footer-name">Her</span>. <span style="opacity:.6">© <span id="year"></span></span></div>
+  </footer>
+  
+  <!-- Wordle pop button -->
+<!-- Princess Minnie Wordle CTA -->
+<a class="wordle-cta"
+   href="https://www.thewordfinder.com/wordle-maker/?game=cHN5Y2hvbG9neQ=="
+   target="_blank" rel="noopener"
+   aria-label="Play the Princess Minnie themed Wordle">
+  <span class="w-text">Princess Minnie Themed Wordle</span>
+  <span class="w-icon" aria-hidden="true">
+    <svg viewBox="0 0 48 48">
+      <rect x="5"  y="5"  width="16" height="16" rx="3" fill="#6b2c5b"/>
+      <rect x="27" y="5"  width="16" height="16" rx="3" fill="#b24b8e"/>
+      <rect x="5"  y="27" width="16" height="16" rx="3" fill="#b892ff"/>
+      <rect x="27" y="27" width="16" height="16" rx="3" fill="#ff9ed8"/>
+    </svg>
+  </span>
+</a>
+
+
+  <!-- Scripts -->
+  <script type="module" src="assets/main.js"></script>
+  
+  <script>
+  // Detect iOS Safari-ish
+  const isIOS = /iP(hone|ad|od)/.test(navigator.platform)
+    || (navigator.userAgent.includes('Mac') && 'ontouchend' in document);
+
+  // Backdrop blur already handled via CSS; this part gently throttles balloons on iOS
+  if (typeof window.launchBalloons === 'function' && isIOS){
+    window.launchBalloons = ((orig)=> (opts={}) =>
+      orig(Object.assign({ count: 10 }, opts))
+    )(window.launchBalloons);
+  }
+</script>
+
+</body>
+</html>

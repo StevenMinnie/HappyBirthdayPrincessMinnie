@@ -1,0 +1,441 @@
+/* Theme + base */
+:root{
+  --bg:#fff0f6; --bg-soft:#ffe8f2; --card:#ffffff;
+  --ink:#6b2c5b; --muted:#9c5f8c; --brand:#b892ff;
+  --shadow: 0 12px 30px rgba(210,120,180,.25); --radius: 16px;
+  --tributeCols: 0.6fr 1.4fr;
+  --tributeH: 560px;
+  --videoChrome: 110px;
+
+  /* Z-INDEX MAP */
+  --z-bg: 0;              /* background decor (bags, sparkles, garland) */
+  --z-content: 1;         /* main sections */
+  --z-nav: 50;            /* sticky nav */
+  --z-confetti-card: 400; /* confetti inside the card */
+  --z-fg-effects: 9000;   /* global confetti */
+  --z-balloons: 10000;    /* global balloons above confetti */
+  --z-crown: 2;           /* crown over portrait */
+}
+
+*{box-sizing:border-box}
+html,body{
+  margin:0;padding:0;color:var(--ink);
+  background:
+    radial-gradient(1000px 500px at 10% -5%, #ffe2f0 20%, transparent 60%),
+    radial-gradient(800px 420px at 110% 0%, #f5e1ff 20%, transparent 60%),
+    linear-gradient(180deg,var(--bg),var(--bg-soft) 45%, #ffe9f7 80%);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
+  scroll-behavior:smooth;
+}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;margin:0 0 .6rem}
+h1{font-size:clamp(2.2rem,6vw,4.2rem)}
+h2{font-size:clamp(1.6rem,3.5vw,2.2rem)}
+h3{font-size:clamp(1.2rem,2.5vw,1.4rem)}
+p{line-height:1.6;color:var(--muted)}
+
+/* Decorations */
+.decor{position:fixed; pointer-events:none; z-index:var(--z-bg); opacity:.25; filter:drop-shadow(0 6px 12px rgba(210,120,180,.35));}
+.decor.crown{ top: -10px; left: 8%; width: 110px; }
+.decor.balloons{ top: 10%; right: -30px; width: 230px; }
+.decor.cake{ bottom: -12px; left: -18px; width: 200px; }
+
+/* Nav */
+.nav{
+  position:sticky; top:0; z-index:var(--z-nav);
+  background:rgba(255,240,246,.75);
+  backdrop-filter:saturate(150%) blur(10px);
+  border-bottom:1px solid rgba(210,120,180,.25)
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1200px;margin:0 auto;padding:.75rem 1rem}
+.brand{display:flex;gap:.6rem;align-items:center;font-weight:800}
+.dot{width:12px;height:12px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #ffd1ea, #ff90cf)}
+.menu{display:flex;gap:.9rem;flex-wrap:wrap}
+.menu a{color:var(--ink);opacity:.9;padding:.45rem .8rem;border-radius:9999px;transition:transform .2s, background .2s}
+.menu a:hover{background:#ffe7f3;transform:translateY(-1px)}
+
+/* Hero */
+.hero{position:relative;overflow:hidden}
+.hero-inner{max-width:1200px;margin:0 auto;padding:8rem 1rem 5rem;display:grid;grid-template-columns:1.1fr .9fr;gap:2rem}
+@media (max-width:900px){.hero-inner{grid-template-columns:1fr;padding-top:5.5rem}}
+.badge{display:inline-flex;align-items:center;gap:.5rem;padding:.35rem .7rem;border-radius:999px;background:#ffe7f3;color:#b24b8e;font-weight:600;border:1px solid rgba(210,120,180,.35)}
+.lead{font-size:clamp(1rem,2.2vw,1.2rem);color:var(--muted);margin-top:.6rem}
+.cta{display:flex;gap:1rem;margin-top:1.4rem}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.8rem 1.1rem;border-radius:12px;border:1px solid rgba(210,120,180,.28);background:linear-gradient(180deg,#ffd6ec,#ffb7dd);color:#6b2c5b;font-weight:800;box-shadow:var(--shadow)}
+.btn.secondary{background:linear-gradient(180deg,#f7e8ff,#e9d1ff)}
+.hero-card{background:radial-gradient(1200px 600px at 80% -10%,rgba(255,170,210,.3),transparent),linear-gradient(180deg,#fff,#fff6fb);border:1px solid rgba(210,120,180,.25);border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow)}
+.portrait{
+  width:100%;aspect-ratio:4/5;border-radius:14px;background:linear-gradient(135deg,#ffe6f3,#f6e6ff);
+  border:1px solid rgba(210,120,180,.25);
+  display:flex;align-items:center;justify-content:center;color:#c86aa5;font-weight:800;
+  position:relative;overflow:visible
+}
+.portrait img{width:100%;height:100%;object-fit:cover;border-radius:14px;display:block}
+
+/* Sections */
+section{max-width:1200px;margin:0 auto;padding:3.5rem 1rem; position:relative; z-index:var(--z-content);}
+.section-head{display:flex;align-items:end;justify-content:space-between;margin-bottom:1.4rem}
+.sub{color:var(--muted);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.8rem}
+
+/* Timeline */
+.timeline{position:relative;padding-left:1.2rem;margin-top:1rem}
+.timeline:before{content:"";position:absolute;left:.3rem;top:.2rem;bottom:.2rem;width:2px;background:linear-gradient(#ffc2e1,transparent)}
+.t-item{position:relative;margin:1rem 0;padding:1rem;border:1px solid rgba(210,120,180,.22);background:linear-gradient(180deg,#fff,#fff7fb);border-radius:12px;box-shadow:var(--shadow)}
+.t-item:before{content:"";position:absolute;left:-.52rem;top:1.2rem;width:.8rem;height:.8rem;border-radius:50%;background:radial-gradient(circle at 30% 30%, #ffadd6,#ffa8d1);box-shadow:0 0 0 3px rgba(255,155,210,.25)}
+.t-title{font-weight:800;margin-bottom:.2rem}
+.t-meta{color:var(--muted);font-size:.95rem}
+
+/* Achievements */
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:1rem}
+.card{grid-column:span 4;background:linear-gradient(180deg,#fff,#fff7fb);border:1px solid rgba(210,120,180,.22);border-radius:14px;padding:1rem;transition:transform .2s;box-shadow:var(--shadow)}
+.card:hover{transform:translateY(-2px)}
+@media (max-width:900px){.card{grid-column:span 6}}
+@media (max-width:640px){.card{grid-column:span 12}}
+
+/* Testimonials */
+.carousel{position:relative;overflow:hidden;border-radius:14px;border:1px solid rgba(210,120,180,.22);background:#fff9fd;box-shadow:var(--shadow)}
+.slides{display:flex;transition:transform .5s ease}
+.slide{min-width:100%;padding:1rem;display:flex;align-items:center;justify-content:center}
+.testi-photo{width:100%;max-width:980px;max-height:70vh;border-radius:16px;border:1px solid rgba(210,120,180,.25);object-fit:cover;box-shadow:var(--shadow);background:#fff}
+.arrows{position:absolute;inset:0;display:flex;align-items:center;justify-content:space-between;padding:0 .4rem}
+.arrow{width:42px;height:42px;border-radius:50%;border:1px solid rgba(210,120,180,.35);background:linear-gradient(180deg,#ffe0f0,#ffd0ea);display:grid;place-items:center;cursor:pointer;color:#6b2c5b;font-weight:900;box-shadow:var(--shadow)}
+
+/* Values */
+.values{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.value{background:linear-gradient(180deg,#fff,#fff7fb);border:1px solid rgba(210,120,180,.22);border-radius:14px;padding:1rem;box-shadow:var(--shadow)}
+@media (max-width:900px){.values{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.values{grid-template-columns:1fr}}
+
+/* Tribute */
+.tribute{display:grid;grid-template-columns: var(--tributeCols);gap: 1rem;}
+.gift{
+  position:relative;background:radial-gradient(800px 500px at 90% -10%,rgba(255,170,210,.18),transparent),linear-gradient(180deg,#fff,#fff7fb);
+  border:1px solid rgba(210,120,180,.25);border-radius:16px;padding:1rem;min-height:var(--tributeH);
+  display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:var(--shadow)
+}
+.gift .inner{width:100%;max-width:900px;text-align:center}
+canvas#confetti{position:absolute;inset:0;pointer-events:none; z-index:var(--z-confetti-card);}
+
+#video-wrap{width:100%}
+#video-wrap video, #video-wrap iframe{
+  width:100%; height: calc(var(--tributeH) - var(--videoChrome)); max-height: 70vh;
+  border:0;border-radius:14px;display:block;object-fit:cover;
+}
+
+/* Link hub */
+/* your existing button kept as-is */
+.linkbtn{
+  display:inline-flex;align-items:center;gap:.6rem;
+  padding:.3rem 1.2rem;border-radius:12px;
+  border:1px solid rgba(210,120,180,.28);
+  background:linear-gradient(180deg,#ffd6ec,#ffb7dd);
+  color:#6b2c5b;font-weight:900;box-shadow:var(--shadow);
+}
+
+/* card with optional background image */
+.linkcard{
+  position:relative;
+  border-radius:20px;
+  padding:28px 22px;
+  margin:16px auto;
+  background:#ffeaf5;                 /* fallback if no image */
+  box-shadow:0 20px 40px rgba(186,110,170,.18);
+  overflow:hidden;
+  text-align:center;
+}
+
+/* remove/lighten your ::after veil */
+.linkcard.has-bg::after{ background: transparent; }
+
+/* enhance the image only */
+.linkcard.has-bg::before{
+  content:""; position:absolute; inset:0; z-index:0;
+  background: var(--bg-img) center/cover no-repeat;
+  filter: contrast(1.15) saturate(1.12) brightness(.92); /* tweak these */
+  transform: scale(1.03);
+}
+
+/* lift content above background layers */
+.linkcard > *{ position:relative; z-index:2; }
+
+/* subtle typography tweaks */
+.linknote{
+  margin:0 0 12px;
+  color:#6b2c5b; opacity:.9; font-weight:600;
+}
+
+/* mobile tune: tighten padding, raise overlay if needed */
+@media (max-width: 600px){
+  .linkcard{ padding:22px 16px; }
+}
+
+/* Mobile tweaks */
+@media (max-width:760px){
+  :root{ --tributeCols: 1fr; --tributeH: 420px; --videoChrome: 120px; }
+}
+
+/* Journey link icons */
+.t-links{display:flex;gap:.5rem;align-items:center;margin-top:.55rem;flex-wrap:wrap}
+.t-link{display:inline-grid;place-items:center;width:120px;height:90px;border-radius:6px;background:#fff;border:1px solid rgba(210,120,180,.25);box-shadow:var(--shadow);transition:transform .15s ease, box-shadow .15s ease; overflow:hidden}
+.t-link:hover{transform:translateY(-1px)}
+.t-link img{width:100%;height:100%;object-fit:contain;display:block}
+.t-link span{display:grid;place-items:center;width:100%;height:100%;font-size:.75rem;font-weight:800;color:#6b2c5b;background:radial-gradient(circle at 30% 30%, #ffeef7, #ffd6ec)}
+
+/* Flip book styles */
+.book-wrap{max-width:980px;margin:3rem auto;padding:1rem}
+.book-title{margin:0 0 .8rem}
+.book{position:relative;width:min(600px,92vw);height:min(750px,55vw);margin:0 auto;perspective:2000px}
+.sheets{position:relative;width:100%;height:100%}
+.sheet{position:absolute; inset:0; transform-style:preserve-3d; transition:transform .8s cubic-bezier(.22,.61,.36,1); transform-origin:left center;}
+.front.cover .note{max-width:56ch;margin:0 auto}
+.front.cover .note p{font-family:'Patrick Hand','Shadows Into Light',cursive;color:#1a3d8f;font-size:clamp(1rem,1.25vw,1.15rem);line-height:1.9;letter-spacing:.2px;margin:.6rem 0}
+.sheet.s1{z-index:7; left:0}.sheet.s2{z-index:6; left:6px}.sheet.s3{z-index:5; left:12px}.sheet.s4{z-index:4; left:18px}.sheet.s5{z-index:3; left:24px}.sheet.s6{z-index:2; left:30px}.sheet.s7{z-index:1; left:36px}
+.page{position:absolute; inset:0; border-radius:14px; overflow:hidden; backface-visibility:hidden; -webkit-backface-visibility:hidden; border:1px solid rgba(210,120,180,.22); box-shadow:0 14px 40px rgba(210,120,180,.18); background:#fff}
+.front.cover{ display:grid; place-items:center; padding:2rem; text-align:center; background:linear-gradient(180deg,#fff,#fff7fb)}
+.front.cover h3{font-family:"Playfair Display",serif;font-size:clamp(1.6rem,3.5vw,2.2rem);color:#6b2c5b;margin:0 0 .6rem}
+.front.cover p{color:#9c5f8c; max-width:46ch; margin:0 auto}
+.page iframe{width:100%;height:100%;border:0;display:block; border-radius:14px; background:#fff}
+.back{ transform:rotateY(180deg) }
+.book-controls{display:flex;gap:.6rem;justify-content:center;margin-top:1rem;flex-wrap:wrap}
+.flip-btn{display:inline-block;cursor:pointer;user-select:none;background:linear-gradient(180deg,#ffd6ec,#ffb7dd);border:1px solid rgba(210,120,180,.28);padding:.75rem 1rem;border-radius:12px;font-weight:900;color:#6b2c5b;box-shadow:0 10px 24px rgba(210,120,180,.25)}
+.flip-note{color:#9c5f8c;text-align:center;margin-top:.4rem}
+input[name="leaf"]{position:absolute;opacity:0;pointer-events:none}
+#leaf1:checked ~ .book .sheet.s1{transform:rotateY(-180deg)}
+#leaf2:checked ~ .book .sheet.s1, #leaf2:checked ~ .book .sheet.s2{transform:rotateY(-180deg)}
+#leaf3:checked ~ .book .sheet.s1, #leaf3:checked ~ .book .sheet.s2, #leaf3:checked ~ .book .sheet.s3{transform:rotateY(-180deg)}
+#leaf4:checked ~ .book .sheet.s1, #leaf4:checked ~ .book .sheet.s2, #leaf4:checked ~ .book .sheet.s3, #leaf4:checked ~ .book .sheet.s4{transform:rotateY(-180deg)}
+#leaf5:checked ~ .book .sheet.s1, #leaf5:checked ~ .book .sheet.s2, #leaf5:checked ~ .book .sheet.s3, #leaf5:checked ~ .book .sheet.s4, #leaf5:checked ~ .book .sheet.s5{transform:rotateY(-180deg)}
+#leaf6:checked ~ .book .sheet.s1, #leaf6:checked ~ .book .sheet.s2, #leaf6:checked ~ .book .sheet.s3, #leaf6:checked ~ .book .sheet.s4, #leaf6:checked ~ .book .sheet.s5, #leaf6:checked ~ .book .sheet.s6{transform:rotateY(-180deg)}
+#leaf7:checked ~ .book .sheet.s1, #leaf7:checked ~ .book .sheet.s2, #leaf7:checked ~ .book .sheet.s3, #leaf7:checked ~ .book .sheet.s4, #leaf7:checked ~ .book .sheet.s5, #leaf7:checked ~ .book .sheet.s6, #leaf7:checked ~ .book .sheet.s7{transform:rotateY(-180deg)}
+#leaf1:checked ~ .book .sheet.s1{ z-index:100 } #leaf2:checked ~ .book .sheet.s2{ z-index:100 } #leaf3:checked ~ .book .sheet.s3{ z-index:100 } #leaf4:checked ~ .book .sheet.s4{ z-index:100 } #leaf5:checked ~ .book .sheet.s5{ z-index:100 } #leaf6:checked ~ .book .sheet.s6{ z-index:100 } #leaf7:checked ~ .book .sheet.s7{ z-index:100 }
+.book-controls [data-for]{display:none}
+#leaf0:checked ~ .book-controls [data-for="leaf1"],
+#leaf1:checked ~ .book-controls [data-for="leaf2"],
+#leaf2:checked ~ .book-controls [data-for="leaf3"],
+#leaf3:checked ~ .book-controls [data-for="leaf4"],
+#leaf4:checked ~ .book-controls [data-for="leaf5"],
+#leaf5:checked ~ .book-controls [data-for="leaf6"],
+#leaf6:checked ~ .book-controls [data-for="leaf7"],
+#leaf1:checked ~ .book-controls [data-for="leaf0"],
+#leaf2:checked ~ .book-controls [data-for="leaf1-back"],
+#leaf3:checked ~ .book-controls [data-for="leaf2-back"],
+#leaf4:checked ~ .book-controls [data-for="leaf3-back"],
+#leaf5:checked ~ .book-controls [data-for="leaf4-back"],
+#leaf6:checked ~ .book-controls [data-for="leaf5-back"],
+#leaf7:checked ~ .book-controls [data-for="leaf6-back"]{display:inline-block}
+
+/* Full-screen layers (confetti + balloons) */
+#confettiPage{
+  position: fixed; inset: 0; pointer-events: none; z-index: var(--z-fg-effects);
+}
+#balloonLayer{
+  position: fixed; inset: 0; pointer-events: none; z-index: var(--z-balloons); overflow: hidden;
+}
+.balloon{
+  position: absolute; bottom: -20vh;
+  width: clamp(36px, 4.2vw, 64px); aspect-ratio: 3 / 5; opacity:.95;
+  animation: float-up var(--rise, 11s) linear forwards;
+}
+.balloon .wiggle{ width:100%; height:100%; animation: sway var(--swayDur, 3.2s) ease-in-out infinite alternate; }
+@keyframes float-up{ 0%{transform:translateY(0);opacity:0} 10%{opacity:1} 100%{transform:translateY(-120vh);opacity:.9} }
+@keyframes sway{ 0%{transform:translateX(-10px) rotate(-2deg)} 100%{transform:translateX(10px) rotate(2deg)} }
+@media (prefers-reduced-motion: reduce){ #confettiPage, #balloonLayer{ display:none; } }
+
+/* ===== Princess crown over portrait (SVG embedded) ===== */
+.portrait::after{
+  content:""; position:absolute; top:-80px; left:50%; width:300px; height:160px; pointer-events:none; z-index: var(--z-crown);
+  transform:translateX(-50%) rotate(-8deg);
+  background: no-repeat center/contain url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 160'><defs><linearGradient id='gold' x1='0' x2='1' y1='0' y2='1'><stop offset='0' stop-color='%23ffd6ec'/><stop offset='1' stop-color='%23f4c06b'/></linearGradient><linearGradient id='gemPink' x1='0' x2='1'><stop offset='0' stop-color='%23ff9ed8'/><stop offset='1' stop-color='%23ff6fb5'/></linearGradient></defs><rect x='24' y='108' width='192' height='22' rx='11' fill='url(%23gold)' stroke='%23d8a85a' stroke-width='2'/><path d='M24,110 Q120,90 216,110 L216,122 L24,122 Z' fill='url(%23gold)' opacity='0.8'/><path d='M30,110 60,55 90,110Z' fill='url(%23gold)' stroke='%23d8a85a' stroke-width='2'/><path d='M90,110 120,30 150,110Z' fill='url(%23gold)' stroke='%23d8a85a' stroke-width='2'/><path d='M150,110 180,55 210,110Z' fill='url(%23gold)' stroke='%23d8a85a' stroke-width='2'/><circle cx='60' cy='58' r='7' fill='url(%23gemPink)' stroke='%23b24b8e' stroke-width='2'/><circle cx='120' cy='35' r='9' fill='url(%23gemPink)' stroke='%23b24b8e' stroke-width='2'/><circle cx='180' cy='58' r='7' fill='url(%23gemPink)' stroke='%23b24b8e' stroke-width='2'/></svg>");
+}
+@media (max-width:640px){
+  .portrait::after{ top:-28px; width:64px; height:40px; }
+}
+
+/* ===== Designer handbag + cake decorative elements (SVG embedded) ===== */
+.decor-bag{
+  position:fixed; right:-60px; bottom:20%; width:220px; opacity:.24; transform:rotate(-8deg);
+  pointer-events:none; z-index:var(--z-bg); filter:drop-shadow(0 8px 16px rgba(210,120,180,.25));
+  background:no-repeat center/contain url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 220 200'><defs><linearGradient id='bagBody' x1='0' x2='1'><stop offset='0' stop-color='%23ffe2f2'/><stop offset='1' stop-color='%23f6e6ff'/></linearGradient></defs><rect x='20' y='70' width='180' height='100' rx='16' fill='url(%23bagBody)' stroke='%23d07aa8' stroke-width='3'/><path d='M20,78 Q110,28 200,78 L200,88 L20,88 Z' fill='%23ffd6ec' stroke='%23d07aa8' stroke-width='3'/><path d='M60,76 Q110,20 160,76' fill='none' stroke='%23c86aa5' stroke-width='6'/><circle cx='110' cy='92' r='8' fill='%23fff' stroke='%23b24b8e' stroke-width='3'/></svg>");
+}
+.decor-cake2{
+  position:fixed; left:-40px; bottom:-10px; width:200px; opacity:.26; pointer-events:none; z-index:var(--z-bg);
+  filter:drop-shadow(0 8px 16px rgba(210,120,180,.25));
+  background:no-repeat center/contain url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 240 180'><ellipse cx='120' cy='150' rx='90' ry='14' fill='%23ffe3f3'/><rect x='40' y='110' width='160' height='40' rx='10' fill='%23ffe6f3' stroke='%23ff9ad6' stroke-width='2'/><rect x='55' y='80' width='130' height='35' rx='10' fill='%23ffd6ec' stroke='%23ff9ad6' stroke-width='2'/><path d='M55,100 C70,120 85,100 100,100 C115,120 130,98 145,100 C160,120 175,98 185,100' fill='none' stroke='%23ffa3d9' stroke-width='3'/><g><rect x='80' y='58' width='8' height='22' fill='%23b892ff'/><rect x='116' y='58' width='8' height='22' fill='%23ffbde6'/><rect x='152' y='58' width='8' height='22' fill='%23e9c6ff'/><path d='M84,56 q4,-8 8,0' fill='%23ffd166'/><path d='M120,56 q4,-8 8,0' fill='%23ffd166'/><path d='M156,56 q4,-8 8,0' fill='%23ffd166'/></g></svg>");
+}
+
+/* ===== Subtle sparkles tile across the page (SVG embedded) ===== */
+.decor-sparkle-tiling{
+  position:fixed; inset:0; pointer-events:none; z-index:var(--z-bg);
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 160 160'><rect width='160' height='160' fill='none'/><g opacity='0.25'><path d='M20 40 l6 12 l12 6 l-12 6 l-6 12 l-6 -12 l-12 -6 l12 -6 z' fill='%23ffbde6'/><path d='M100 80 l5 10 l10 5 l-10 5 l-5 10 l-5 -10 l-10 -5 l10 -5 z' fill='%23e9c6ff'/><circle cx='130' cy='30' r='4' fill='%23ffd6ec'/><circle cx='36' cy='120' r='3' fill='%23f2a7d0'/></g></svg>");
+  background-size: 240px 240px; background-repeat: repeat; opacity:.10;
+  animation: twinkle 6s ease-in-out infinite alternate;
+}
+@keyframes twinkle{ from{opacity:.08} to{opacity:.18} }
+
+/* ===== Floral garland across the very top (SVG embedded) ===== */
+
+body::before{
+  content:""; position:fixed; left:0; top:0; width:100%; height:120px; z-index:var(--z-bg); pointer-events:none;
+  background: repeat-x top center/auto 120px url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 160'><defs><linearGradient id='leaf' x1='0' x2='0' y1='0' y2='1'><stop offset='0' stop-color='%23c9f7e1'/><stop offset='1' stop-color='%23a6e5d0'/></linearGradient></defs><rect width='1200' height='160' fill='none'/><g opacity='0.9'><path d='M0,80 C200,20 400,140 600,60 C800,-10 1000,120 1200,60' fill='none' stroke='%23d7b7e8' stroke-width='4'/><g fill='url(%23leaf)' stroke='%2395cdb7' stroke-width='2'><ellipse cx='120' cy='72' rx='24' ry='14'/><ellipse cx='180' cy='60' rx='18' ry='12'/><ellipse cx='240' cy='90' rx='22' ry='13'/><ellipse cx='320' cy='70' rx='20' ry='12'/><ellipse cx='460' cy='80' rx='24' ry='14'/><ellipse cx='520' cy='58' rx='16' ry='10'/><ellipse cx='640' cy='84' rx='24' ry='14'/><ellipse cx='720' cy='60' rx='18' ry='12'/><ellipse cx='820' cy='90' rx='22' ry='13'/><ellipse cx='920' cy='70' rx='20' ry='12'/><ellipse cx='1040' cy='80' rx='24' ry='14'/></g><g><circle cx='160' cy='78' r='10' fill='%23ffbde6' stroke='%23b24b8e' stroke-width='2'/><circle cx='300' cy='66' r='8' fill='%23ffd6ec' stroke='%23c86aa5' stroke-width='2'/><circle cx='380' cy='88' r='9' fill='%23e9c6ff' stroke='%23b892ff' stroke-width='2'/><circle cx='560' cy='70' r='8' fill='%23ffd6ec' stroke='%23c86aa5' stroke-width='2'/><circle cx='700' cy='78' r='10' fill='%23ffbde6' stroke='%23b24b8e' stroke-width='2'/><circle cx='860' cy='66' r='8' fill='%23ffd6ec' stroke='%23c86aa5' stroke-width='2'/><circle cx='980' cy='88' r='9' fill='%23e9c6ff' stroke='%23b892ff' stroke-width='2'/></g></g></svg>");
+}
+/* STATIC designer bags as a single fixed background layer (no JS) */
+body::after{
+  content:"";
+  position:fixed; inset:0; pointer-events:none;
+  z-index: var(--z-bg);
+  opacity: 1;
+
+  background:
+    url("/assets/img/bag1.png") no-repeat 8% 10% / 140px,
+    url("/assets/img/bag2.png") no-repeat 8% 28% / 150px,
+    url("/assets/img/bag3.png") no-repeat 1% 28% / 140px,
+    url("/assets/img/bag4.png") no-repeat 90% 25% / 150px,
+    url("/assets/img/cake.png") no-repeat 0% 90% / 320px,
+    url("/assets/img/dogs.png") no-repeat 105% 85% / 380px,
+    url("/assets/img/Santa.png") no-repeat 95% 50% / 200px;
+}
+
+
+/* ===== Sparkle starlets around her name (SVG embedded) ===== */
+.hero h1{ position:relative; }
+.hero h1 span{ position:relative; padding:0 .4rem; }
+.hero h1 span::before,
+.hero h1 span::after{
+  content:""; position:absolute; top:-0.4em; width:100px; height:100px; pointer-events:none; opacity:.9;
+  background:no-repeat center/contain url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><g fill='%23f4b400'><path d='M20 3 L23 14 L34 17 L23 20 L20 31 L17 20 L6 17 L17 14 Z'/></g><g fill='%23db4437' opacity='0.8'><circle cx='10' cy='8' r='2.2'/><circle cx='30' cy='28' r='2.4'/></g><g fill='%234285f4' opacity='0.8'><circle cx='30' cy='10' r='2.2'/><circle cx='10' cy='30' r='2.2'/></g></svg>");
+  animation: star-pop 2.2s ease-in-out infinite;
+}
+.hero h1 span::before{ left:-0.65em; animation-delay:.15s; }
+.hero h1 span::after{ right:-4.8em; animation-delay:.95s; }
+@keyframes star-pop{
+  0%,100%{ transform:scale(1) rotate(0deg); opacity:.6 }
+  50%{ transform:scale(1.35) rotate(14deg); opacity:1 }
+}
+
+/* Reduced motion: hide purely decorative animations */
+@media (prefers-reduced-motion: reduce){
+  .decor-sparkle-tiling,
+  .hero h1 span::before,
+  .hero h1 span::after{ display:none; }
+}
+
+/* STATIC designer bags: no animations */
+#bagLayer{
+  position:fixed; inset:0; pointer-events:none; z-index:var(--z-bg);
+  overflow:hidden;
+}
+
+/* each static bag: size & place via inline style */
+.bag-static{
+  position:absolute;
+  width:120px;                 /* can be overridden inline */
+  aspect-ratio:1 / 1;
+  opacity:1;                 /* subtle; tweak per image */
+  background:no-repeat center/contain var(--img);
+  filter: drop-shadow(0 6px 12px rgba(210,120,180,.15));
+}
+
+/* optional: scale down on very small screens */
+@media (max-width:640px){
+  .bag-static{ width:88px; }
+}
+
+/* Floating Wordle button */
+/* Floating Princess Minnie Wordle pill */
+.wordle-cta{
+  position: fixed;
+  right: 18px;
+  bottom: 20px;
+  z-index: 3000;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px 12px 10px 14px;
+  border-radius: 9999px;
+  background: linear-gradient(180deg,#fff,#fff7fb);
+  border: 1px solid rgba(210,120,180,.35);
+  box-shadow: 0 10px 26px rgba(210,120,180,.28);
+
+  text-decoration: none;
+  transform-origin: right bottom;
+  transition: transform .16s ease, box-shadow .16s ease, background .2s ease;
+  animation: wordle-breathe 2.4s ease-in-out infinite;
+}
+
+.wordle-cta:hover{
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 14px 34px rgba(210,120,180,.35);
+}
+.wordle-cta:active{
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 8px 18px rgba(210,120,180,.28);
+}
+
+.w-text{
+  font: 800 13.5px/1.2 Inter, system-ui, sans-serif;
+  color: #6b2c5b;
+  white-space: nowrap;
+}
+
+.w-icon{
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  border-radius: 12px;
+  background: linear-gradient(180deg,#ffd6ec,#ffb7dd);
+  border: 1px solid rgba(210,120,180,.35);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7);
+}
+.w-icon svg{ width: 26px; height: 26px; display:block; }
+
+/* gentle periodic pop */
+@keyframes wordle-breathe{
+  0%,100%{ transform: scale(1) }
+  50%    { transform: scale(1.06) }
+}
+
+/* Reduced motion: no idle animation */
+@media (prefers-reduced-motion: reduce){
+  .wordle-cta{ animation: none; }
+}
+
+/* Mobile: keep only the icon if space is tight */
+@media (max-width: 520px){
+  .wordle-cta{ padding: 10px; gap: 0; }
+  .w-text{ display:none; }
+}
+
+
+/* 1) Glassy navbar works in Safari too */
+.nav{
+  -webkit-backdrop-filter: saturate(150%) blur(10px); /* Safari */
+  backdrop-filter: saturate(150%) blur(10px);
+}
+/* Fallback if blur isn’t supported */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))){
+  .nav{ background: rgba(255,240,246,.92); }
+}
+
+/* 2) Safer viewport sizing on iOS (URL bar collapse) */
+.fullscreen,
+#confettiPage,
+#balloonLayer{
+  height: 100dvh;       /* Safari 16+ */
+}
+@supports not (height: 100dvh){
+  .fullscreen,
+  #confettiPage,
+  #balloonLayer{ height: 100vh; }
+}
+
+/* 3) Font rendering polish on Safari */
+html{ -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+
+#hero-title span {
+  text-shadow: 0 0 4px rgba(0,0,0,0.2);
+  font-weight: bold;
+}
+

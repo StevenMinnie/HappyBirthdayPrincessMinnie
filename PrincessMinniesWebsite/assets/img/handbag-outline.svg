@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 200">
+  <defs>
+    <linearGradient id="bagBody" x1="0" x2="1">
+      <stop offset="0" stop-color="#ffe2f2"/>
+      <stop offset="1" stop-color="#f6e6ff"/>
+    </linearGradient>
+  </defs>
+  <!-- body -->
+  <rect x="20" y="70" width="180" height="100" rx="16" fill="url(#bagBody)" stroke="#d07aa8" stroke-width="3"/>
+  <!-- flap -->
+  <path d="M20,78 Q110,28 200,78 L200,88 L20,88 Z" fill="#ffd6ec" stroke="#d07aa8" stroke-width="3"/>
+  <!-- handle -->
+  <path d="M60,76 Q110,20 160,76" fill="none" stroke="#c86aa5" stroke-width="6"/>
+  <!-- clasp -->
+  <circle cx="110" cy="92" r="8" fill="#fff" stroke="#b24b8e" stroke-width="3"/>
+</svg>
